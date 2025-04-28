@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Team Section</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            background-color: #000000;
+            color: #ffffff;
+        }
+
+        .space {
+            margin: 40px 0;
+        }
+
+        .team-box {
+            position: relative;
+            justify-content: center;
+            margin-top: 20px;
+            margin-bottom: 80px;
+            transition: 0.4s ease-in-out;
+        }
+
+        .team-img img {
+            width: 100%;
+            border-radius: 20px;
+            transition: transform 0.4s ease-in-out;
+        }
+
+        .team-content {
+            background-color: #fff;
+            box-shadow: 0px 10px 18px rgba(229, 229, 229, 0.8);
+            border-radius: 20px;
+            padding: 20px;
+            position: absolute;
+            left: 20px;
+            right: 20px;
+            bottom: -40px;
+            height: 95px;
+            text-align: center;
+            transition: 0.4s ease-in-out;
+            overflow: hidden;
+        }
+
+        .team-content h4 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #161921;
+        }
+
+        .team-content span {
+            font-size: 16px;
+            color: #eb0029;
+        }
+
+        .social-media i {
+            font-size: 17px;
+            margin: 0 10px;
+            transition: 0.4s ease-in-out;
+            color: #525952;
+        }
+
+        .social-media i:hover {
+            color: #eb0029;
+        }
+
+        .team-box:hover .team-img img {
+            transform: scale(1.1);
+        }
+
+        .team-box:hover .team-content {
+            height: 130px;
+        }
+
+        .team-box:hover .social-media {
+            visibility: visible;
+            opacity: 1;
+            margin-top: 10px;
+        }
+
+        .form-section {
+            margin-bottom: 60px;
+        }
+
+        .btn-primary {
+            background-color: #eb0029;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #ff0044;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <section class="form-section space">
+            <h2 class="text-center text-danger">Add Team Member</h2>
+            <form id="teamForm" class="mt-4">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="name" placeholder="Enter name" required>
+                </div>
+                <div class="mb-3">
+                    <label for="role" class="form-label">Role</label>
+                    <input type="text" class="form-control" id="role" placeholder="Enter role" required>
+                </div>
+                <div class="mb-3">
+                    <label for="instagram" class="form-label">Instagram Handle</label>
+                    <input type="url" class="form-control" id="instagram" placeholder="Enter Instagram URL">
+                </div>
+                <div class="mb-3">
+                    <label for="facebook" class="form-label">Facebook Handle</label>
+                    <input type="url" class="form-control" id="facebook" placeholder="Enter Facebook URL">
+                </div>
+                <div class="mb-3">
+                    <label for="linkedin" class="form-label">LinkedIn Handle</label>
+                    <input type="url" class="form-control" id="linkedin" placeholder="Enter LinkedIn URL">
+                </div>
+                <div class="mb-3">
+                    <label for="photo" class="form-label">Photo</label>
+                    <input type="url" class="form-control" id="photo" placeholder="Enter photo URL" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Add Member</button>
+            </form>
+        </section>
+
+        <section class="space">
+            <div class="container">
+                <div class="title text-center">
+                    <h2>Our Team</h2>
+                </div>
+                <div class="row justify-content-center" id="teamContainer">
+                    <!-- Cards will be dynamically added here -->
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        document.getElementById('teamForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Collect input values
+            const name = document.getElementById('name').value;
+            const role = document.getElementById('role').value;
+            const instagram = document.getElementById('instagram').value;
+            const facebook = document.getElementById('facebook').value;
+            const linkedin = document.getElementById('linkedin').value;
+            const photo = document.getElementById('photo').value;
+
+            // Create the card HTML
+            const cardHTML = `
+                <div class="col-lg-4 col-xl-3 col-md-6 d-flex justify-content-center">
+                    <div class="team-box">
+                        <div class="team-img">
+                            <img src="${photo}" alt="Team Member" class="img-fluid">
+                        </div>
+                        <div class="team-content">
+                            <h4>${name}</h4>
+                            <span>${role}</span>
+                            <div class="social-media">
+                                ${instagram ? `<a href="${instagram}" target="_blank"><i class="fa-brands fa-instagram"></i></a>` : ''}
+                                ${facebook ? `<a href="${facebook}" target="_blank"><i class="fa-brands fa-facebook"></i></a>` : ''}
+                                ${linkedin ? `<a href="${linkedin}" target="_blank"><i class="fa-brands fa-linkedin"></i></a>` : ''}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            // Append the card to the team container
+            document.getElementById('teamContainer').insertAdjacentHTML('beforeend', cardHTML);
+
+            // Reset the form
+            document.getElementById('teamForm').reset();
+        });
+    </script>
+
+</body>
+
+</html>
