@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You | Innovation Archive</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-image: url(./images/bgimage.jpeg);
+            background-size: cover;
+            background-color: rgba(181, 91, 91, 0.9); /* Fallback color */
+            backdrop-filter: blur(5px);
+        }
+
+        .form-container {
+            background: rgba(181, 91, 91, 0.9);
+            padding: 30px;
+            width: 100%;
+            max-width: 400px;
+            border-radius: 20px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
+            color: #fff;
+            text-align: center;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        p {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .btn-custom {
+            background-color: #fff;
+            color: #000;
+            border-radius: 40px;
+            transition: 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .btn-custom:hover {
+            background-color: rgba(181, 91, 91, 0.9);
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="form-container">
+        <h2>Thank You!</h2>
+        <p>A password reset link has been sent to your email.</p>
+        <p>You will be redirected to the login page in <span id="countdown">5</span> seconds.</p>
+        <a href="login.html" class="btn btn-custom">Go to Login</a>
+    </div>
+
+    <script>
+        // Countdown timer
+        let countdown = 5;
+        const countdownElement = document.getElementById('countdown');
+
+        const timer = setInterval(() => {
+            countdown--;
+            countdownElement.textContent = countdown;
+
+            if (countdown === 0) {
+                clearInterval(timer);
+                window.location.href = "login.html"; // Redirect to login page
+            }
+        }, 1000);
+    </script>
+</body>
+
+</html>
