@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Innovation Archive</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #000;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        .navbar {
+            background-color: #111;
+            border-bottom: 2px solid #ff0000;
+            box-shadow: 0px 4px 10px rgba(255, 0, 0, 0.3);
+        }
+
+        .navbar-brand {
+            font-size: 1.5rem;
+            color: #ff0000;
+            font-weight: bold;
+        }
+
+        .navbar-nav .nav-link {
+            color: #e1cbcb;
+            font-size: 1rem;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #ff0000;
+        }
+
+        .hero {
+            height: 100vh;
+            background: url('./images/bgimage.jpeg') no-repeat center center/cover;
+            backdrop-filter: blur(5px);
+            position: relative;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            color: #ff0000;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            color: #fff;
+            margin-top: 10px;
+            animation: fadeIn 2.5s ease-in-out;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: -1;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .mission-section {
+            padding: 80px 20px;
+            text-align: center;
+            background-color: #111;
+        }
+
+        .mission-section h2 {
+            font-size: 3rem;
+            margin-bottom: 30px;
+            color: #ff0000;
+        }
+
+        .mission-box {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .mission-item {
+            flex: 1 1 250px;
+            max-width: 350px;
+            padding: 20px;
+            background: #1a1a1a;
+            border-radius: 15px;
+            border: 2px solid #ff0000;
+            box-shadow: 0px 4px 15px rgba(255, 0, 0, 0.5);
+            margin: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .mission-item:hover {
+            transform: scale(1.1);
+            box-shadow: 0px 6px 20px rgba(255, 0, 0, 0.7);
+        }
+
+        .mission-item h3 {
+            font-size: 1.5rem;
+            color: #ff0000;
+            margin-bottom: 10px;
+        }
+
+        .mission-item p {
+            font-size: 1rem;
+            color: #fff;
+            line-height: 1.5;
+        }
+
+        .timeline-section {
+            padding: 80px 20px;
+            background: linear-gradient(to bottom, #111, #222);
+            color: #fff;
+            text-align: center;
+        }
+
+        .timeline-section h2 {
+            font-size: 3rem;
+            margin-bottom: 40px;
+            color: #ff0000;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: #ff0000;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+
+        .timeline-item {
+            position: relative;
+            background-color: #333;
+            border: 2px solid #ff0000;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            color: #fff;
+            width: 45%;
+            box-shadow: 0px 4px 10px rgba(255, 0, 0, 0.5);
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 55%;
+        }
+
+        .timeline-item h3 {
+            font-size: 1.5rem;
+            color: #ff0000;
+            margin-bottom: 10px;
+        }
+
+        .timeline-item p {
+            font-size: 1rem;
+        }
+
+        .team-section {
+            padding: 80px 20px;
+            text-align: center;
+            background: #111;
+        }
+
+        .team-section h2 {
+            font-size: 3rem;
+            margin-bottom: 40px;
+            color: #ff0000;
+        }
+
+        .team-member img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 3px solid #ff0000;
+            box-shadow: 0px 4px 10px rgba(255, 0, 0, 0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .team-member img:hover {
+            transform: scale(1.1);
+            box-shadow: 0px 6px 20px rgba(255, 0, 0, 0.9);
+        }
+
+        .team-member h4 {
+            font-size: 1.3rem;
+            color: #ff0000;
+            margin-top: 15px;
+        }
+
+        .team-member p {
+            font-size: 1rem;
+            color: gray;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="#">Innovation Archive</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/New folder/index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/New folder/assets/about_us.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/New folder/assets/contact_us.html">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>Welcome to Innovation Archive</h1>
+        <p>Where technology meets creativity to empower innovation.</p>
+    </section>
+
+    <section class="mission-section">
+        <h2>Our Core Values</h2>
+        <div class="mission-box">
+            <div class="mission-item">
+                <h3>Innovation</h3>
+                <p>We push boundaries to bring groundbreaking ideas to life.</p>
+            </div>
+            <div class="mission-item">
+                <h3>Collaboration</h3>
+                <p>Teamwork lies at the heart of everything we create.</p>
+            </div>
+            <div class="mission-item">
+                <h3>Impact</h3>
+                <p>We aim to deliver solutions that change lives for the better.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="timeline-section">
+        <h2>Our Journey</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <h3>2024</h3>
+                
+
+                <p>Founded with a vision to connect technology with people.</p>
+            </div>
+            <div class="timeline-item">
+                <h3>2025</h3>
+                <p>Will Launching our first product, setting a benchmark for innovation.</p>
+            </div>
+            <div class="timeline-item">
+                <h3>2026</h3>
+                <p>Expanded our team and embraced AI-driven solutions.</p>
+            </div>
+            <div class="timeline-item">
+                <h3>2027</h3>
+                <p>On the path to revolutionizing how the world sees technology.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="team-section">
+        <h2>Meet the Team</h2>
+        <div class="row justify-content-center">
+            <div class="col-md-3 team-member">
+                <img src="./images/Aiuesh.jpg" alt="Team Member">
+                <h4>Aiuesh Kumar</h4>
+                <p>Developer</p>
+            </div>
+            <div class="col-md-3 team-member">
+                <img src="./images/Avikash.jpg"Team Member">
+                <h4>Avikash Choudhary</h4>
+                <p>Leader</p>
+            </div>
+            <div class="col-md-3 team-member">
+                <img src="./images/Akshit.jpg" alt="Team Member">
+                <h4>Akshit</h4>
+                <p>Frontend Designer</p>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
